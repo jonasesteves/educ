@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% block title %}{% with title='Curso' %}{{ block.super }}{% endwith %}{% endblock %}
+{% block description %}{% with description='O curso de Economia e Ciclos de Mercado proporciona aprendizado sobre a importância da economia e dos ciclos de mercado ao investir no mercado financeiro.' %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-curso-ecm overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Curso</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li><a href="#">Curso<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">Economia & Ciclos de Mercado para Investidores</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!-- Courses -->
+<section class="courses single section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="single-main">
+					<div class="row">
+						<div class="col-lg-8 col-12">
+							<!-- Single Course -->
+							<div class="single-course">
+								<div class="course-head">
+									<img src="{% static 'images/mundstock_educacional.jpg' %}" alt="#">
+								</div>
+							</div>
+							<!--/ End Single Course -->
+						</div>
+						<div class="col-lg-4 col-12">
+							<!-- Course Features -->
+							<div class="course-feature">
+								<div class="feature-main">
+									<h4>Características</h4>
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-calendar"></i>
+										<span class="label">Início</span>
+										<span class="value">Em breve!</span>
+									</div>
+									<!--/ End Single Feature -->
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-clock-o"></i>
+										<span class="label">Duração</span>
+										<span class="value">40 horas</span>
+									</div>
+									<!--/ End Single Feature -->
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-magic"></i>
+										<span class="label">Nível</span>
+										<span class="value">Iniciante e Intermediário</span>
+									</div>
+									<!--/ End Single Feature -->
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-user"></i>
+										<span class="label">Vagas</span>
+										<span class="value">30 vagas</span>
+									</div>
+									<!--/ End Single Feature -->
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-check-square-o"></i>
+										<span class="label">Certificado</span>
+										<span class="value">Sim</span>
+									</div>
+									<!--/ End Single Feature -->
+
+								</div>
+							</div>
+							<!--/ End Course Features -->
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<!-- Course Meta -->
+							<div class="course-meta">
+								<!-- Course Info -->
+								<div class="course-info">
+									<div class="single-info author">
+										<img src="{% static 'images/thumb_igor.jpg' %}" alt="Igor Mundstock">
+										<h4>Professor:<a href="#"><span>Igor Mundstock</span></a></h4>
+									</div>
+									<div class="single-info category">
+										<i class="fa fa-money"></i>
+										<h4>Categoria<a href="#"><span>Economia</span></a></h4>
+									</div>
+									<div class="single-info rattings">
+										<i class="fa fa-clock-o"></i>
+										<h4>Duração:<span>40 horas</span></h4>
+									</div>
+								</div>
+								<!--/ End Course Info -->
+								<!-- Course Price -->
+								<div class="course-price">
+									<p>R$ 1499,00</p>
+									<a href="#" class="btn">
+										<i class="fa fa-users"></i>Matriculas em breve</a>
+								</div>
+								<!--/ End Course Price -->
+							</div>
+							<!--/ End Course Meta -->
+						</div>
+						<div class="col-12">
+							<div class="content">
+								<h2><a href="#">Economia & Ciclos de Mercado para Investidores</a></h2>
+								<p>Curso destinado para investidores iniciantes e intermediários que desejam aprender do que se trata as ciências econômicas e descobrir a sua importância no mercado financeiro. O estudo da economia facilita o entendimento sobre os ciclos de mercado e esse conhecimento oferece uma forte vantagem aos investidores que desejam ter alta rentabilidade no longo prazo.</p>
+								<p>Quais conteúdos iremos aprender?</p>
+								<p>O intuito do curso é ensinar os alunos sobre como funcionam as economias, quais dados usar para avaliar o desempenho das mesmas e como os diferentes ciclos econômicos afetam os ciclos de mercado e seus investimentos. Embora não seja pré-requisito entender sobre ciências econômicas para investir, consideramos importante esse conhecimento porque abre o horizonte de análise dos investidores, exercita a lógica e aguça a compreensão sobre a relação de causa e efeito.</p>
+								<p></p>
+							</div>
+						</div>
+						<div class="col-12">
+							<div class="course-required">
+								<h4>Aprenderemos os seguintes assuntos:</h4>
+								<ul>
+									<div class="row">
+										<div class="col-sm-6">
+											<li><span>01</span>Introdução à Economia</li>
+											<li><span>02</span>Princípios da Economia</li>
+											<li><span>03</span>Formação de Preços (Oferta x Demanda)</li>
+											<li><span>04</span>Elasticidade</li>
+											<li><span>05</span>Excedente</li>
+											<li><span>06</span>Impostos</li>
+											<li><span>07</span>Comércio Internacional</li>
+											<li><span>08</span>Microeconomia</li>
+											<li><span>09</span>História e Teoria</li>
+											<li><span>10</span>Estrutura das Empresas</li>
+											<li><span>11</span>Fatores de Produção</li>
+											<li><span>12</span>Teoria da Escolha do Consumidor</li>
+											<li><span>13</span>Macroeconomia</li>
+											<li><span>14</span>História e Teoria</li>
+											<li><span>15</span>Crescimento Econômico</li>
+											<li><span>16</span>Inflação</li>
+										</div>
+										<div class="col-sm-6">
+											<li><span>17</span>Desemprego</li>
+											<li><span>18</span>Câmbio</li>
+											<li><span>19</span>Juros</li>
+											<li><span>20</span>Macroeconomia II</li>
+											<li><span>21</span>Sistema Financeiro Nacional</li>
+											<li><span>22</span>Subsistema Bormativo</li>
+											<li><span>23</span>Subsistema Supervisor</li>
+											<li><span>24</span>Subsistema Operador</li>
+											<li><span>25</span>Política Fiscal</li>
+											<li><span>26</span>Política Monetária</li>
+											<li><span>27</span>Política Cambial</li>
+											<li><span>28</span>Ciclos Econômicos e de Mercado</li>
+											<li><span>29</span>Introdução aos Ciclos</li>
+											<li><span>30</span>O Pêndulo (Howard Marks)</li>
+											<li><span>31</span>Exemplos Históricos</li>
+											<li><span>32</span>Cronograma</li>
+										</div>
+									</div>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Courses -->
+{% endblock %}

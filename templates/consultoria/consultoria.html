@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+{% block title %}{% with title='Consultoria' %}{{ block.super }}{% endwith %}{% endblock %}
+{% block description %}{% with description='Consultoria: organize as suas finanças pessoais e otimize os seus investimentos de acordo com seus objetivos.' %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-consultoria overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Consultoria de Investimentos</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index'%}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">Consultoria</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<section class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 wow zoomIn">
+				<div class="section-title">
+					<h2>Como funciona a <span>Consultoria</span></h2>
+				</div>
+			</div>
+		</div>
+		<div class="row justify-content-center">
+			<div class="col-12 text-justify font-18 wow fadeInUp" data-wow-delay="0.4s">
+				<p>A <strong class="cor-tema">Consultoria de Investimentos</strong> é um serviço profissional de
+					organização financeira, orientação e recomendação de investimentos por um profissional
+					certificado pela Comissão de Valores Mobiliários (CVM). Nesse serviço o consultor avaliar o
+					perfil de investidor do cliente, coleta informações sobre a sua vida financeira e patrimônio e
+					cria um plano de investimentos personalizado e condizente com os seus objetivos,
+					preferências e perfil.</p><br>
+				<p>O economista e consultor de investimentos <strong class="cor-tema">Igor Mundstock</strong> utiliza estratégias de investimento em
+					mercados globais e diferentes classes de ativos para diversificar riscos e tentar maximizar a
+					rentabilidade dos seus investimentos.</p><br>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section fun-facts escuro overlay" data-stellar-background-ratio="0.5">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-center wow zoomIn" data-wow-delay="0.4s">
+				<div class="section-title-consultoria">
+					<h2 class="text-white">Diferenciais da Consultoria</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-center">
+			<div class="col-md-4 col-sm-6 col-12 mt-5 text-center wow zoomIn" data-wow-delay="0.6s">
+				<div class="single-fact">
+					<i class="fa fa-child"></i>
+					<p class="titulo">Independência</p>
+					<p class="descricao">A consultoria é totalmente independente, não recebemos comissões de bancos ou corretoras. Assim os seus objetivos sempre serão nossa prioridade.</p>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6 col-12 mt-5 text-center wow zoomIn" data-wow-delay="0.8s">
+				<div class="single-fact">
+					<i class="fa fa-lock"></i>
+					<p class="titulo">Segurança</p>
+					<p class="descricao">Todos os dados e informações compartilhadas entre você e o consultor são confidenciais. Ninguém tem acesso àquilo que é importante para você.</p>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6 col-12 mt-5 text-center wow zoomIn" data-wow-delay="1s">
+				<div class="single-fact">
+					<i class="fas fa-user-edit"></i>
+					<p class="titulo">Personalização</p>
+					<p class="descricao">Cada consultoria acompanha um relatório personalizada para atender as suas necessidades. Todo cliente é único.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 wow zoomIn">
+				<div class="section-title">
+					<h2>Etapas da <span>Consultoria</span></h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3 etapas-consultoria img1">
+			<div class="col-lg-6 col-12 wow fadeInLeft" data-wow-delay="0.5s">
+				<div class="card border-0 pt-5">
+					<div class="card-body">
+						<h2 class="card-title">Análise do Perfil do Investidor (API) & Reunião Online</h2>
+						<p class="card-text mt-4">Nessa etapa você responde um questionário de avaliação de perfil de investidor. As informações compartilhadas influenciam na definição do seu perfil e na escolha dos melhores investimentos.</p>
+						<p class="card-text mt-3">Converse com o consultor de investimentos numa reunião online. O objetivo é trocar informações chave sobre a sua situação financeira e seus objetivos. O consultor precisa entender como a sua vida financeira funciona para melhor lhe orientar.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3 etapas-consultoria img2">
+			<div class="col-lg-6 offset-lg-6 col-12 wow fadeInRight" data-wow-delay="0.5s">
+				<div class="card border-0 pt-5">
+					<div class="card-body">
+						<h2 class="card-title">Política de Investimentos e Execução</h2>
+						<p class="card-text mt-4">Em até 15 dias o consultor enviará o seu relatório de estratégia de investimento com recomendações condizentes com o seu perfil. Essa política passará pela sua aprovação e poderá ser alterada.</p>
+						<p class="card-text mt-3">Após aprovada, é hora de você executar a estratégia sugerida. O investidor tem a liberdade de investir na instituição financeira de sua escolha.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-4 etapas-consultoria mb img3">
+			<div class="col-lg-6 col-12 wow fadeInLeft" data-wow-delay="0.5s">
+				<div class="card border-0 pt-5">
+					<div class="card-body">
+						<h2 class="card-title">Acompanhamento e Recalibragem</h2>
+						<p class="card-text mt-4">Todos os clientes contam com suporte para sanarem dúvidas e um relatório anual com análise de resultado e comentários do consultor.</p>
+						<p class="card-text mt-4">Os clientes <span style="font-weight: bold;">Private</span> dispõem de suporte diário para dúvidas e reuniões trimestrais e individuais com o consultor para analisar resultados e implementar mudanças na carteira caso necessário.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row row-formulario-consultoria mt-5">
+			<div class="col-lg-6 col-md-8 col-12">
+				<div class="card border-0 text-white">
+					<div class="card-body">
+						<div class="card-title">Soluções de Investimento para Você</div>
+						<div class="card-text">Para mais informações e detalhes agende uma demonstração e o consultor entrará em contato por e-mail em breve.</div>
+						<div class="button">
+							<button class="btn bg-dark btn-consultoria text-white" data-toggle="modal" data-target="#cadastro"><i class="far fa-calendar-alt"></i> Agendar demonstração</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="modal fade mt-5" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-lg-5">
+						<div class="container overlay bg-consultoria bg-form-consultoria h-100">
+<!--							<div class="text-center opacidade">-->
+<!--								<div class="font-36 cor-tema my-4">Amplie seus horizontes</div>-->
+<!--								<div class="font-18 text-white my-5">Aumente o potencial e resultados dos seus investimentos</div>-->
+<!--							</div>-->
+						</div>
+					</div>
+					<div class="col-lg-7">
+						<div class="row">
+							<div class="col-12">
+								<div class="text-center mt-4">
+									<p class="font-36 cor-tema">Conheça nossass soluções!</p>
+									<p class="my-4">Preencha seus dados e em breve entraremos em contato.</p>
+								</div>
+							</div>
+							{% include 'utils/aviso-erro-formulario.html' %}
+							<div class="col-12">
+								<form id="form-perfil" method="post" action="">
+									{% csrf_token %}
+									{% for field in form %}
+									<div class="row">
+										<div class="col-12">
+											<div class="form-group">
+												{{ field }}
+												<div class="invalido">
+													{{ field.errors }}
+												</div>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+									<div class="row">
+										<div class="col text-center">
+											<div class="form-group">
+												<div class="button">
+													<button type="submit" class="btn btn-consultoria bg-orange text-white">Quero conhecer!</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/ End Formulario de cadastro -->
+
+{% if messages %}
+{% for m in messages %}
+{% if m.level == 25 %}
+<div class="modal fade mt-5" id="sucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header bg-orange">
+				<h5 class="modal-title text-white" id="exampleModalLabel">Seu interesse foi registrado!</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p class="font-18">{{ m }}</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn bg-orange text-white" data-dismiss="modal">Ok</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>$('#sucesso').modal({ show: true });</script>
+{% endif %}
+{% if m.level == 40 %}
+<script>$('#cadastro').modal({ show: true });</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+<script src="{% static 'js/jquery.mask.js' %}"></script>
+<script src="{% static 'js/form-validity-custom.js' %}"></script>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% block robots %}{% with noindex=True %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-club overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Club</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index'%}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">Club</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!--Formulario de cadastro-->
+<section id="formulario" class="about-us contact section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 wow zoomIn">
+				<div class="section-title">
+					<h2>Detalhes do <span>Pagamento</span></h2>
+					<p>Para fazer parte do Mundstock Club, realize seu cadastro preenchendo o formulário a seguir e
+						aceite os termos e condições.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-4 align-items-center">
+			<div class="col-md-6 text-center">
+				<div class="sete-dias"><span>7</span> dias Grátis</div>
+				<div>*No primeiro acesso.</div>
+				<div>Após o período gratuito serão efetuadas cobranças recorrentes de acordo com o plano escolhido.</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-head">
+					<form action="{% url 'gestao:pagamento-club' precadastro.id %}" class="" autocomplete="off" method="post" >
+						{% csrf_token %}
+						<div class="row">
+							{% if messages %}
+							<script>location.href = "#formulario";</script>
+							{% for m in messages %}
+							<div class="col-12">
+								<div class="alert alert-{{ m.tags }} alert-dismissible fade show" role="alert">
+									{{ m }}
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							</div>
+							{% endfor %}
+							{% endif %}
+						</div>
+						<div class="row">
+							<div class="col-12 mb-3">
+								<div class="form-group">
+									{{ form.nome }}
+									<div class="invalido">
+										{{ form.nome.errors }}
+									</div>
+								</div>
+							</div>
+							<div class="col-12 mb-3">
+								<div class="form-group">
+									{{ form.cpf }}
+									<div class="invalido">
+										{{ form.cpf.errors }}
+									</div>
+								</div>
+							</div>
+							<div class="col-12 mb-3">
+								<div class="form-group">
+									{{ form.email }}
+									<div class="invalido">
+										{{ form.email.errors }}
+									</div>
+								</div>
+							</div>
+							<div class="col-12 mb-3">
+								<div class="form-group">
+									{{ form.telefone }}
+									<div class="invalido">
+										{{ form.telefone.errors }}
+									</div>
+								</div>
+							</div>
+						</div>
+						{% include 'utils/formulario-cartao.html' %}
+						<div class="row mb-3">
+							<div class="col-6">
+								<div class="form-group">
+									<input type="text" class="form-control" value="R$ {{ precadastro.valor }}" disabled>
+								</div>
+							</div>
+							{% if precadastro.plano == '1' %}
+							<div class="col-6">
+								<div id="parcelas" class="form-group">
+									<select class="form-control" disabled>
+										<option>1x (à vista)</option>
+									</select>
+								</div>
+							</div>
+							{% else %}
+							<div class="col-6">
+								<div class="form-group">
+									{{ form.parcelas }}
+									<div class="invalido">
+										{{ form.parcelas.errors }}
+									</div>
+								</div>
+							</div>
+							{% endif %}
+						</div>
+
+						<div class="row">
+							<div class="col-12">
+								<div class="form-check">
+									{{ form.aceito }}
+									<label class="form-check-label" for="chk">Aceito os <a target="_blank" href="{% url 'gestao:club/termos-e-condicoes' %}">Termos e Condições</a>.</label>
+								    <div class="invalido">
+										{{ form.aceito.errors }}
+									</div>
+                                </div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<div class="button">
+										<button type="submit" class="btn primary" onclick="this.disabled=true,this.form.submit();">Cadastrar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Formulario de cadastro -->
+
+<script src="{% static 'js/jquery.mask.js' %}"></script>
+<script src="{% static 'js/form-validity-custom.js' %}"></script>
+
+
+{% endblock %}

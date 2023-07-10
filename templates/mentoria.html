@@ -1,0 +1,411 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Mentoria</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'index'%}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="{% url 'mentoria' %}">mentoria</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!-- About US -->
+<section class="about-us contact section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-12">
+				<div class="single-image overlay">
+					<img src="http://via.placeholder.com/1200x950" alt="#">
+					<a href="https://www.youtube.com/watch?v=UalTfOIDQ7M" class="btn video-popup mfp-fade"><i class="fa fa-play"></i></a>
+				</div>
+			</div>
+			<div class="col-lg-6 col-12">
+				<div class="about-text">
+					<h2>Sobre a nossa mentoria</h2>
+					<p>As marketing professionals in the experiential world, we have become accusto to the idea of an ever evolving industry. Brands today are moving away from purely face to face physical experiences, and bringing their essence to life, not only through digital immersion creativity but through new technology as well including Virtual Reality.</p>
+					<p>face physical experiences, and bringing their essence to life, not only through digital immersion creativity but through new technology as well including Virtual Reality As marketing professionals in the experiential world, we have become accusto to the idea of an ever evolving industry. Brands today are moving away from purely face to face physical experiences,</p>
+					<div class="button">
+						<a href="#" class="btn">Our Courses</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-12">
+				<div class="section-title">
+					<h2>Realize seu <span>Cadastro</span></h2>
+					<p>Para contratar a mentoria, realize seu cadastro preenchendo o formulário a seguir e aceite os termos e condições. Em seguida, realize o pagamento. Nós entraremos em contato para adicionar você nas plataformas.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-12">
+				<div class="form-head">
+					<form action="{% url 'mentoria' %}" class="needs-validation" autocomplete="off" method="post" novalidate>
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-12 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" name="nome" placeholder="Nome Completo" minlength="8" maxlength="100" autocomplete="nao" required>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, preencha este campo corretamente.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 mb-3">
+								<div class="form-group">
+									<input type="email" id="email" class="form-control" name="email" placeholder="E-mail" autocomplete="nao" required>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, preencha seu e-mail corretamente.
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control telefone" name="telefone" placeholder="Telefone" maxlength="15" autocomplete="nao" required>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, preencha seu RG corretamente.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4 col-sm-6 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" name="nacionalidade" placeholder="Nacionalidade" autocomplete="nao" required>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, preencha corretamente.
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-6 mb-3">
+								<div class="form-group">
+									<select class="form-control" name="estado_civil" required>
+										<option value="" disabled selected>Estado Civil</option>
+										<option value="Solteiro">Solteiro(a)</option>
+										<option value="Casado">Casado(a)</option>
+										<option value="Separado">Separado(a)</option>
+										<option value="Divorciado">Divorciado(a)</option>
+										<option value="Viúvo">Viúvo(a)</option>
+									</select>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, selecione seu estado civil.
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-12 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" name="profissao" placeholder="Profissão" autocomplete="nao" maxlength="50" required>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, preencha corretamente.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<div class="form-group">
+									<input type="text" id="cpf" class="form-control cpf" name="cpf" placeholder="CPF" autocomplete="nao" required>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, preencha seu CPF corretamente.
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control rg" name="rg" placeholder="RG" minlength="7" maxlength="20" autocomplete="nao" required>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, preencha seu RG corretamente.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-10 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" name="logradouro" placeholder="Logradouro" minlength="10" maxlength="50" autocomplete="nao" required>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, preencha corretamente.
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" name="numero" placeholder="Número" maxlength="6" autocomplete="nao" required>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, preencha corretamente.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" name="cep" placeholder="CEP"
+										   autocomplete="nao" size="10" maxlength="9" onblur="pesquisacep(this.value);" required>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, preencha corretamente.
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" name="bairro" placeholder="Bairro" maxlength="50" autocomplete="nao" required>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, preencha corretamente.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" name="cidade" placeholder="Cidade" maxlength="50" autocomplete="nao" required>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, preencha corretamente.
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 mb-3">
+								<div class="form-group">
+									<select name="uf" class="form-control" required>
+										<option value="" disabled selected>Estado</option>
+										<option value="AC">Acre</option>
+										<option value="AL">Alagoas</option>
+										<option value="AP">Amapá</option>
+										<option value="AM">Amazonas</option>
+										<option value="BA">Bahia</option>
+										<option value="CE">Ceará</option>
+										<option value="DF">Distrito Federal</option>
+										<option value="ES">Espírito Santo</option>
+										<option value="GO">Goiás</option>
+										<option value="MA">Maranhão</option>
+										<option value="MT">Mato Grosso</option>
+										<option value="MS">Mato Grosso do Sul</option>
+										<option value="MG">Minas Gerais</option>
+										<option value="PA">Pará</option>
+										<option value="PB">Paraíba</option>
+										<option value="PR">Paraná</option>
+										<option value="PE">Pernambuco</option>
+										<option value="PI">Piauí</option>
+										<option value="RJ">Rio de Janeiro</option>
+										<option value="RN">Rio Grande do Norte</option>
+										<option value="RS">Rio Grande do Sul</option>
+										<option value="RO">Rondônia</option>
+										<option value="RR">Roraima</option>
+										<option value="SC">Santa Catarina</option>
+										<option value="SP">São Paulo</option>
+										<option value="SE">Sergipe</option>
+										<option value="TO">Tocantins</option>
+									</select>
+									<div class="valid-feedback">
+										Tudo certo!
+									</div>
+									<div class="invalid-feedback">
+										Por favor, selecione seu estado.
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<div class="button">
+										<button type="submit" class="btn primary">Cadastrar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End About US -->
+
+
+<script src="{% static 'js/jquery.mask.js' %}"></script>
+<script src="{% static 'js/form-validity-custom.js' %}"></script>
+
+
+<!-- Fun Facts -->
+<div class="fun-facts overlay" data-stellar-background-ratio="0.5">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-3 col-md-6 col-6">
+				<!-- Single Fact -->
+				<div class="single-fact">
+					<i class="fa fa-institution"></i>
+					<div class="number"><span class="counter">80</span>k+</div>
+					<p>Active Cources</p>
+				</div>
+				<!--/ End Single Fact -->
+			</div>
+			<div class="col-lg-3 col-md-6 col-6">
+				<!-- Single Fact -->
+				<div class="single-fact">
+					<i class="fa fa-graduation-cap"></i>
+					<div class="number"><span class="counter">33</span>k+</div>
+					<p>Active Students</p>
+				</div>
+				<!--/ End Single Fact -->
+			</div>
+			<div class="col-lg-3 col-md-6 col-6">
+				<!-- Single Fact -->
+				<div class="single-fact">
+					<i class="fa fa-video-camera"></i>
+					<div class="number"><span class="counter">278</span>+</div>
+					<p>Video Cources</p>
+				</div>
+				<!--/ End Single Fact -->
+			</div>
+			<div class="col-lg-3 col-md-6 col-6">
+				<!-- Single Fact -->
+				<div class="single-fact">
+					<i class="fa fa-trophy"></i>
+					<div class="number"><span class="counter">308</span>+</div>
+					<p>Awards Won</p>
+				</div>
+				<!--/ End Single Fact -->
+			</div>
+		</div>
+	</div>
+</div>
+<!--/ End Fun Facts -->
+
+<!-- Team -->
+<section class="team section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title">
+					<h2>Our Awesome <span>Teachers</span></h2>
+					<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendreri </p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-3 col-md-6 col-12">
+				<!-- Single Team -->
+				<div class="single-team">
+					<img src="http://via.placeholder.com/275x370" alt="#">
+					<div class="team-hover">
+						<h4>Rohan Jonson<span>Associate Professor</span></h4>
+						<p>cumque nihil impedit quo minusid quod maxime placeat facere possimus</p>
+						<ul class="social">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<!--/ End Single Team -->
+			</div>
+			<div class="col-lg-3 col-md-6 col-12">
+				<!-- Single Team -->
+				<div class="single-team active">
+					<img src="http://via.placeholder.com/275x370" alt="#">
+					<div class="team-hover">
+						<h4 class="name">Ian Harvey<span class="work">Web Programmer</span></h4>
+						<p>cumque nihil impedit quo minusid quod maxime placeat facere possimus</p>
+						<ul class="social">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<!--/ End Single Team -->
+			</div>
+			<div class="col-lg-3 col-md-6 col-12">
+				<!-- Single Team -->
+				<div class="single-team">
+					<img src="http://via.placeholder.com/275x370" alt="#">
+					<div class="team-hover">
+						<h4 class="name">Lusfat Roman<span class="work">Software Engineer</span></h4>
+						<p>cumque nihil impedit quo minusid quod maxime placeat facere possimus</p>
+						<ul class="social">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<!--/ End Single Team -->
+			</div>
+			<div class="col-lg-3 col-md-6 col-12">
+				<!-- Single Team -->
+				<div class="single-team">
+					<img src="http://via.placeholder.com/275x370" alt="#">
+					<div class="team-hover">
+						<h4 class="name">Nalpamb Bold<span class="work">JS Developer</span></h4>
+						<p>cumque nihil impedit quo minusid quod maxime placeat facere possimus</p>
+						<ul class="social">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<!--/ End Single Team -->
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Team -->
+{% endblock %}

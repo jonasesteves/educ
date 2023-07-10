@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}{% with title='Livros Recomendados' %}{{ block.super }}{% endwith %}{% endblock %}
+{% block description %}{% with description='Os livros recomendados pela Mundstock Educacional' %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-livros overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Livros Recomendados</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">Livros Recomendados</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!--Inicio Livros-->
+<section class="section courses archives ">
+	<div class="container">
+		{% for categoria in page_obj %}
+		<div class="row mt-5">
+			<div class="col-12">
+				<div class="section-title">
+					<h2><span>{{ categoria.nome }}</span></h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			{% for livro in categoria.livro_set.all %}
+			<div class="col-md-3 col-6 mb-5">
+				{{ livro.link|safe }}
+			</div>
+			{% empty %}
+			<div class="col-12 mb-5">
+				<p class="h6">Em breve a lista de livros estará disponível.</p>
+			</div>
+			{% endfor %}
+		</div>
+		{% endfor %}
+
+		<!-- Paginacao -->
+		{% include 'utils/paginacao.html' %}
+		<!-- Fim Paginacao -->
+	</div>
+</section>
+<!--Fim Livros-->
+{% endblock %}

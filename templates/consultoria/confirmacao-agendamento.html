@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block robots %}{% with noindex=True %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-consultoria overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Agendamento</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li><a href="#">Consultoria<i class="fa fa-angle-right"></i></a></li>
+					<li><a href="#">Agendamento<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">Confirmação</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+
+<section id="formulario" class="section contact">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 wow zoomIn">
+				<div class="section-title">
+					<h2>Sua consultoria foi <span>Agendada</span></h2>
+					<p class="font-24">Você receberá um e-mail com os detalhes do agendamento.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<div class="col-12">
+				<p class="font-18"><strong>Data da reunião: </strong>{{ data|date:'d \d\e F \d\e Y' }}</p>
+				<p class="font-18"><strong>Horário agendado: </strong>De {{ inicio }} às {{ fim }}</p>
+			</div>
+		</div>
+	</div>
+</section>
+{% endblock %}

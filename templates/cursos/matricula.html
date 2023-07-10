@@ -1,0 +1,128 @@
+{% extends '../base.html' %}
+{% block robots %}{% with noindex=True %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% load static %}
+{% block content %}
+
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-produtos overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Cursos Mundstock Educacional</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li><a href="">Cursos<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">Matrícula</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<section id="formulario" class="contact section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title">
+					<h2>{{ curso.nome }}</h2>
+					<p>
+						Você está se matriculando no curso <strong>{{ curso.nome }}.</strong>
+						Para garantir a entrega dos seus dados de acesso, preencha corretamente os dados a seguir.
+						O preenchimento correto dos dados é de inteira responsabilidade do aluno.
+						<strong>Confira antes de finalizar.</strong>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			{% include 'utils/aviso-erro-formulario.html' %}
+			<div class="col-12">
+				<div class="form-head">
+					<form autocomplete="off" method="post">
+						{% csrf_token %} {{ form.errors }}
+						<div class="row">
+							<div class="col-md-6 col-12 mb-3">
+								<div class="form-group">
+									{{ form.nome }}
+									<div class="invalido">
+										{{ form.nome.errors }}
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-12 mb-3">
+								<div class="form-group">
+									{{ form.cpf }}
+									<div class="invalido">
+										{{ form.cpf.errors }}
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-12 mb-3">
+								<div class="form-group">
+									{{ form.email }}
+									<div class="invalido">
+										{{ form.email.errors }}
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 col-12 mb-3">
+								<div class="form-group">
+									{{ form.telefone }}
+									<div class="invalido">
+										{{ form.telefone.errors }}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row align-items-center">
+							<div class="col-sm-6 col-12 mt-4">
+								<img class="img-fluid" src="{% static 'images/cartao.jpg' %}">
+							</div>
+							<div class="col-sm-6 col-12 mt-4">
+								{% include 'utils/formulario-cartao.html' %}
+								<div class="row">
+									<div class="col-6">
+										<div class="form-group">
+											<input type="text" class="form-control" value="R$ {{ valor_com_desconto }}" disabled>
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="form-group">
+											{{ form.parcelas }}
+											<div class="invalido">
+												{{ form.parcelas.errors }}
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-check">
+											{{ form.aceito }}
+											<label class="form-check-label" for="chk">Aceito os <a target="_blank" href="#">Termos e Condições</a>.</label>
+											<div class="invalido">
+												{{ form.aceito.errors }}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-4">
+							<div class="col">
+								<div class="form-group">
+									<div class="button">
+										<button type="submit" class="btn primary">Finalizar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script src="{% static 'js/jquery.mask.js' %}"></script>
+<script src="{% static 'js/form-validity-custom.js' %}"></script>
+{% endblock %}

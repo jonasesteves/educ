@@ -1,0 +1,131 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-cursos overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Curso</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li><a href="{% url 'core:cursos' %}">Cursos<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">{{ curso.nome }}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!-- Courses -->
+<section class="courses single section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="single-main">
+					<div class="row">
+						<div class="col-lg-8 col-12">
+							<!-- Single Course -->
+							<div class="single-course">
+								<div class="course-head">
+									<img src="{{ curso.imagem.url }}" alt="#">
+								</div>
+							</div>
+							<!--/ End Single Course -->
+						</div>
+						<div class="col-lg-4 col-12">
+							<!-- Course Features -->
+							<div class="course-feature">
+								<div class="feature-main">
+									<h4>Características</h4>
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-calendar"></i>
+										<span class="label">Início</span>
+										<span class="value">{{ curso.inicio }}</span>
+									</div>
+									<!--/ End Single Feature -->
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-clock-o"></i>
+										<span class="label">Duração</span>
+										<span class="value">{{ curso.duracao }}
+										{% if curso.duracao > 1 %}meses{% else %}mês{% endif %}
+										</span>
+									</div>
+									<!--/ End Single Feature -->
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-magic"></i>
+										<span class="label">Nível</span>
+										<span class="value">{{ curso.nivel }}</span>
+									</div>
+									<!--/ End Single Feature -->
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-user"></i>
+										<span class="label">Vagas</span>
+										<span class="value">{{ curso.vagas }}</span>
+									</div>
+									<!--/ End Single Feature -->
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-check-square-o"></i>
+										<span class="label">Certificado</span>
+										<span class="value">{{ curso.certificado }}</span>
+									</div>
+									<!--/ End Single Feature -->
+								</div>
+							</div>
+							<!--/ End Course Features -->
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<!-- Course Meta -->
+							<div class="course-meta">
+								<!-- Course Info -->
+								<div class="course-info">
+									<div class="single-info author">
+										<img src="{% static 'images/thumb_igor.jpg' %}" alt="Igor Mundstock">
+										<h4>Professor:<a href="#"><span>Igor Mundstock</span></a></h4>
+									</div>
+									<div class="single-info category">
+										<i class="fa fa-money"></i>
+										<h4>Categoria<a href="#"><span>{{ curso.categoria }}</span></a></h4>
+									</div>
+									<div class="single-info s-enroll">
+										<i class="fa fa-users"></i>
+										<h4>Enrolled:<span>302 Student Enrolled</span></h4>
+									</div>
+									<div class="single-info rattings">
+										<i class="fa fa-clock-o"></i>
+										<h4>Duração:<span>{{ curso.duracao }} {% if curso.duracao > 1 %}meses{% else %}mês{% endif %}</span></h4>
+									</div>
+								</div>
+								<!--/ End Course Info -->
+								<!-- Course Price -->
+								<div class="course-price">
+									<p>R$ {{ curso.valor }}</p>
+									<a href="{% if curso.ativo %}{% url 'gestao:formulario' curso.id %}{% else %}#{% endif %}" class="btn">
+										<i class="fa fa-users"></i>{% if curso.ativo %}Matricular Agora{% else %}Encerrado{% endif %}</a>
+								</div>
+								<!--/ End Course Price -->
+							</div>
+							<!--/ End Course Meta -->
+						</div>
+						<div class="col-12">
+							<div class="content">
+								<h2><a href="#">{{ curso.nome }}</a></h2>
+								<p>{{ curso.descricao_completa }}</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Courses -->
+{% endblock %}

@@ -1,0 +1,279 @@
+{% load static %}
+{% load redes_sociais %}
+{% load navbar %}
+{% consultoria_menu as c %}
+{% cursos_menu as cursos %}
+{% now 'Y' as ano %}
+<!DOCTYPE html>
+<html class="no-js" lang="pt-br">
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="keywords" content="mundstock educacional, economia, igor mundstock, mercado financeiro, bolsa de valores, educação financeira, cursos, consultoria, club" />
+    <meta name='copyright' content='© Copyright {{ ano }} Mundstock Educacional'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+    {% block robots %}{% if noindex %}<meta name="robots" content="noindex" />{% endif %}{% endblock robots %}
+
+    {% block title %}<title>{{ title }}</title>{% endblock title %}
+    {% block description %}<meta name="description" content="{{ description }}">{% endblock description %}
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+    <!-- Web Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+
+    <!-- Jquery JS-->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate.min.js' %}"></script>
+    <!-- Popper JS-->
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <!-- Bootstrap JS-->
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome-free-5.15.4-web/css/all.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <!-- Fancy Box CSS -->
+    <link rel="stylesheet" href="{% static 'css/jquery.fancybox.min.css' %}">
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <!-- Slick Nav CSS -->
+    <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+
+    <!-- Learedu Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+
+    <!-- Learedu Color -->
+    <link rel="stylesheet" href="{% static 'css/color/color5.css' %}">
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5YW3TN46M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-J5YW3TN46M');
+    </script>
+
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/99aabfcf3e2b326aabe4467a2/6680a37a26185f85db5567cc5.js");</script>
+</head>
+<body>
+
+<!-- Book Preloader -->
+<!--<div class="book_preload">-->
+<!--    <div class="book">-->
+<!--        <div class="book__page"></div>-->
+<!--        <div class="book__page"></div>-->
+<!--        <div class="book__page"></div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--/ End Book Preloader -->
+
+<!-- Header -->
+<header class="header">
+
+    <!-- Header Inner -->
+    <div class="header-inner">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-12">
+                    <div class="logo">
+                        <a href="{% url 'core:index' %}"><img src="{% static 'images/logo2.svg' %}" alt="#"></a>
+                    </div>
+                    <div class="mobile-menu"></div>
+                </div>
+                <div class="col-lg-9 col-md-9 col-12">
+                    <!-- Header Widget -->
+                    <div class="header-widget">
+                        <div class="single-widget">
+                            <i class="fa fa-envelope-o"></i>
+                            <h4>E-mail<a href="mailto:contato@mundstockeducacional.com.br"><span>contato@mundstockeducacional.com.br</span></a></h4>
+                        </div>
+                    </div>
+                    <!--/ End Header Widget -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Header Inner -->
+
+    <!-- Header Menu -->
+    <div class="header-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-default">
+                        <div class="navbar-collapse">
+                            <!-- Main Menu -->
+                            <ul id="nav" class="nav menu navbar-nav">
+                                <li><a href="{% url 'core:index' %}">Home</a></li>
+                                <li><a href="{% url 'core:quem-somos' %}">Quem Somos</a></li>
+                                {% if cursos %}<li><a href="{% url 'core:curso-epi' %}">Curso</a></li>{% endif %}
+                                <li>
+                                    <a href="#">Serviços<i class="fa fa-angle-down"></i></a>
+                                    <ul class="dropdown">
+<!--                                        <li><a href="#">Club</a></li>-->
+                                        {% if c %}<li><a href="{% url 'gestao:consultoria' %}">Consultoria</a></li>{% endif %}
+                                        <li><a href="{% url 'core:livros-recomendados' %}">Livros Recomendados</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'pedidos:produtos' %}">Produtos</a></li>
+                                <li><a href="{% url 'blog:blog' %}">Blog</a></li>
+                            </ul>
+                            <!-- End Main Menu -->
+                            <!-- button -->
+                            <div class="button">
+                                <a href="{% url 'core:contato' %}" class="btn"><i class="fa fa-pencil"></i>Contate-nos</a>
+                            </div>
+                            <!--/ End Button -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Header Menu -->
+</header>
+<!-- End Header -->
+
+{% block content %} {% endblock %}
+
+
+<!-- Footer -->
+<footer class="footer overlay section">
+    <!-- Footer Top -->
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-12">
+                    <!-- About -->
+                    <div class="single-widget about">
+                        <div class="logo"><a href="#"><img src="{% static 'images/logo2.svg' %}" alt="#"></a></div>
+                        <p>A missão da Mundstock Educacional é oferecer educação de alta qualidade sobre economia, finanças e investimentos.</p>
+                        <ul class="list">
+                            <li><i class="fa fa-envelope"></i>Email: <a href="mailto:contato@mundstockeducacional.com.br">contato@mundstockeducacional.com.br</a></li>
+                            <li><i class="fa fa-map-o"></i>Rua Santa Bárbara, 18 - Santa Cruz do Sul, RS</li>
+                        </ul>
+                    </div>
+                    <!--/ End About -->
+                </div>
+                <div class="col-lg-3 col-md-6 col-12">
+                    <!-- Useful Links -->
+                    <div class="single-widget useful-links ">
+                        <h2>Links Úteis</h2>
+                        <ul>
+                            <li><a href="{% url 'core:index' %}"><i class="fa fa-angle-right"></i>Home</a></li>
+                            <li><a href="{% url 'core:quem-somos' %}"><i class="fa fa-angle-right"></i>Quem Somos</a></li>
+<!--                            <li><a href="#"><i class="fa fa-angle-right"></i>Club</a></li>-->
+                            {% if cursos %}<li><a href="{% url 'core:curso-epi' %}"><i class="fa fa-angle-right"></i>Curso</a></li>{% endif %}
+                            {% if c %}<li><a href="{% url 'gestao:consultoria' %}"><i class="fa fa-angle-right"></i>Consultoria</a></li>{% endif %}
+                            <li><a href="{% url 'core:livros-recomendados' %}"><i class="fa fa-angle-right"></i>Livros</a></li>
+                            <li><a href="{% url 'pedidos:produtos' %}"><i class="fa fa-angle-right"></i>Produtos</a></li>
+                        </ul>
+                    </div>
+                    <!--/ End Useful Links -->
+                </div>
+<!--                <div class="col-lg-2 col-md-4 col-12 align-self-center">-->
+<!--                    <div class="single-widget text-center">-->
+<!--                        <img src="{% static 'images/anbima-cor.jpg' %}">-->
+<!--                    </div>-->
+<!--                </div>-->
+                <div class="col-lg-5 col-md-12 col-12 align-self-center">
+                    <div class="single-widget text-center">
+                        <p class="h5">Disclaimer</p>
+                        <p>
+                            As informações contidas neste website são de caráter meramente informativo e não constituem
+                            qualquer tipo de aconselhamento de investimentos, não devendo ser utilizadas para esta finalidade.
+                            Rentabilidade passada não representa garantia de resultados futuros.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Footer Top -->
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="bottom-head">
+                        <div class="row">
+                            <div class="col-12">
+                                <!-- Social -->
+                                <ul class="social">
+                                    <li><a href="{% instagram %}" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="{% twitter %}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="{% linkedin %}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="{% youtube %}" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                                </ul>
+                                <!-- End Social -->
+                                <!-- Copyright -->
+                                <div class="copyright">
+
+                                    <p>© Copyright {{ ano }} <a href="#">Mundstock Educacional</a>. All Rights Reserved</p>
+                                </div>
+                                <!--/ End Copyright -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ End Footer Bottom -->
+</footer>
+<!--/ End Footer -->
+
+
+
+
+<!-- Jquery Steller JS -->
+<script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+<!-- Particle JS -->
+<script src="{% static 'js/particles.min.js' %}"></script>
+<!-- Fancy Box JS-->
+<script src="{% static 'js/facnybox.min.js' %}"></script>
+<!-- Magnific Popup JS-->
+<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<!-- Masonry JS-->
+<script src="{% static 'js/masonry.pkgd.min.js' %}"></script>
+<!-- Circle Progress JS -->
+<script src="{% static 'js/circle-progress.min.js' %}"></script>
+<!-- Owl Carousel JS-->
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<!-- Waypoints JS-->
+<script src="{% static 'js/waypoints.min.js' %}"></script>
+<!-- Slick Nav JS-->
+<script src="{% static 'js/slicknav.min.js' %}"></script>
+<!-- Counter Up JS -->
+<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+<!-- Easing JS-->
+<script src="{% static 'js/easing.min.js' %}"></script>
+<!-- Wow Min JS-->
+<script src="{% static 'js/wow.min.js' %}"></script>
+<!-- Scroll Up JS-->
+<script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+<!-- Google Maps JS -->
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyC0RqLa90WDfoJedoE3Z_Gy7a7o8PCL2jw"></script>
+<script src="{% static 'js/gmaps.min.js' %}"></script>
+<!-- Main JS-->
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/active.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+{% load navbar %}
+{% consultoria as c %}
+<!-- Header Menu -->
+<div class="header-menu">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<nav class="navbar navbar-default">
+					<div class="navbar-collapse">
+						<!-- Main Menu -->
+						<ul id="nav" class="nav menu navbar-nav">
+							<li><a href="{% url 'core:index' %}">Home</a></li>
+							<li><a href="{% url 'core:quem-somos' %}">Quem Somos</a></li>
+							<li><a href="{% url 'core:cursos' %}">Cursos</a></li>
+<!--							<li><a href="#">Club</a></li>-->
+							<li><a href="{% url 'pedidos:produtos' %}">Produtos</a></li>
+							{% if c %}<li><a href="{% url 'core:consultoria' %}">Consultoria</a></li>{% endif %}
+							<li><a href="{% url 'blog:blog' %}">Blog</a></li>
+						</ul>
+						<!-- End Main Menu -->
+						<!-- button -->
+						<div class="button">
+							<a href="{% url 'core:contato' %}" class="btn"><i class="fa fa-pencil"></i>Contate-nos</a>
+						</div>
+						<!--/ End Button -->
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</div>
+<!--/ End Header Menu -->

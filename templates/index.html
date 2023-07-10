@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}{% with title='Mundstock Educacional' %}{{ block.super }}{% endwith %}{% endblock %}
+{% block description %}{% with description='Mundstock Educacional - Economia e Finanças' %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Slider Area -->
+{% include 'slider.html' %}
+<!--/ End Slider Area -->
+
+<!-- Features -->
+{% include 'features.html' %}
+<!-- End Features -->
+
+<!-- Enroll -->
+<!-- include 'enroll.html' %}-->
+<!--/ End Enroll -->
+
+<!-- Courses -->
+<!--  'courses-static.html' -->
+<!--/ End Courses -->
+
+<!-- Team -->
+{% include 'team.html' %}
+<!--/ End Team -->
+
+<!-- Call To Action -->
+{% include 'livros-recomendados.html' %}
+<!--/ End Call To Action -->
+
+<!-- Blogs -->
+{% include 'blogs.html' %}
+<!--/ End Blogs -->
+
+<!-- Testimonials -->
+{% include 'testimonials.html' %}
+<!--/ End Testimonials -->
+
+{% include 'utils/modal-feedback.html' %}
+
+{% endblock %}

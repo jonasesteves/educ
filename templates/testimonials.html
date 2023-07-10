@@ -1,0 +1,21 @@
+<section class="testimonials overlay section" data-stellar-background-ratio="0.5">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="testimonial-slider">
+                    {% for depoimento in depoimentos %}
+					<!-- Single Testimonial -->
+					<div class="single-testimonial">
+						<img src="{{ depoimento.imagem.thumb.url }}" alt="#">
+						<div class="main-content">
+							<h4 class="name">{{ depoimento.nome }}</h4>
+							<p>{{ depoimento.texto }}</p>
+						</div>
+					</div>
+					<!--/ End Single Testimonial -->
+                    {% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

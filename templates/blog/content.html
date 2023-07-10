@@ -1,0 +1,22 @@
+<section class="blog b-archives section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12">
+                <div class="row">
+                    {% for artigo in page_obj %}
+                        <div class="col-lg-6 col-12">
+                            {% include 'blog/artigo-preview.html' %}
+                        </div>
+                    {% empty %}
+                        <p style="font-size: 28px;">Nenhum resultado.</p>
+                    {% endfor %}
+                </div>
+            </div>
+            {% include 'blog/right-sidebar.html' %}
+        </div>
+
+        <!-- Pagination -->
+        {% include 'utils/paginacao.html' %}
+        <!--/ End Pagination -->
+    </div>
+</section>

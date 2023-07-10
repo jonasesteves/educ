@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+{% block title %}{% with title='Club' %}{{ block.super }}{% endwith %}{% endblock %}
+{% block description %}{% with description='O Club é o grupo de mentorados do economista Igor Mundstock' %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-club overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Club</h2>
+                <ul class="bread-list">
+                    <li><a href="{% url 'core:index'%}">Home<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active"><a href="#">Club</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!-- About Club -->
+<section class="about-us contact section">
+    <div class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-sm-10 col-12">
+                <div class="single-image">
+                    <iframe width="800" height="420" src="https://www.youtube.com/embed/k_nQICgnq58?autoplay=1" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5 club-topics">
+            <div class="col-md-4 col-sm-6 col-12 mt-5 text-center">
+                <i class="fa fa-telegram"></i>
+                <p class="titulo">Grupo no Telegram</p>
+                <p class="descricao">Interaja com os outros assinantes e aprenda todos os dias algo novo</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-12 mt-5 text-center">
+                <i class="fa fa-group"></i>
+                <p class="titulo">Mentoria Quinzenal em Grupo</p>
+                <p class="descricao">Participe das lives quinzenais com Igor Mundstock e todos os assinantes</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-12 mt-5 text-center">
+                <i class="fa fa-video-camera"></i>
+                <p class="titulo">Biblioteca de Aulas</p>
+                <p class="descricao">Tenha acesso à biblioteca de mentorias e assista mais de 20 horas de conteúdo</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-12 mt-5 text-center">
+                <i class="fa fa-bell-o"></i>
+                <p class="titulo">Imersão de Mercado</p>
+                <p class="descricao">Receba notificações de acontecimentos importantes no mercado global e oportunidades de investimento</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-12 mt-5 text-center">
+                <i class="fa fa-mobile"></i>
+                <p class="titulo">Aplicativo Club</p>
+                <p class="descricao">Tenha acesso ao <a href="https://mundstock-club.mn.co/feed" target="_blank">aplicativo</a> do Club e assista as mentorias na palma da sua mão</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-12 mt-5 text-center">
+                <i class="fa fa-check-square-o"></i>
+                <p class="titulo">7 Dias Grátis*</p>
+                <p class="descricao">Tenha acesso a todo esse conteúdo por 7 dias grátis</p>
+            </div>
+        </div>
+    </div>
+    <!-- Fun Facts -->
+    {% include 'fun-facts.html' %}
+    <!--/ End Fun Facts -->
+
+    <div class="courses single">
+        <div class="container">
+            <div class="row single-main">
+                <div class="col-12">
+                    <div class="course-required">
+                        <h4>Estas são algumas aulas disponíveis para os assinantes:</h4>
+                        <ul class="mt-4">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <li><span>01</span>Growth Stocks e Value Stocks</li>
+                                    <li><span>02</span>Taxa de Juros Negativa</li>
+                                    <li><span>03</span>Como Criar um Plano de Investimentos?</li>
+                                    <li><span>04</span>Microeconomia e Formação de Preços (Oferta x Demanda)</li>
+                                    <li><span>05</span>Value Investing</li>
+                                    <li><span>06</span>Macroeconomia e o Modelo de Oferta e Demanda Agregado</li>
+                                </div>
+                                <div class="col-sm-6">
+                                    <li><span>07</span>Análise de BB Seguridade</li>
+                                    <li><span>08</span>Análise do IPO do TradersClub</li>
+                                    <li><span>09</span>O que é Tapering?</li>
+                                    <li><span>10</span>Ciclo das Commodities</li>
+                                    <li><span>11</span>Escassez de Semicondutores</li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-6">
+        <div class="card-deck">
+            <div class="card border-orange">
+                <div class="card-header text-center bg-orange text-white">
+                    <h3>Mensal</h3>
+                </div>
+                <div class="card-body text-center">
+                    <p class="h2 card-title">R$ 39,90 <small class="text-muted">/mês</small></p>
+                </div>
+            </div>
+
+<!--            <div class="card border-orange">-->
+<!--                <div class="card-header text-center bg-orange text-white">-->
+<!--                    <h3>Anual</h3>-->
+<!--                </div>-->
+<!--                <div class="card-body text-center">-->
+<!--                    <p class="h2 card-title">Indisponível</p>-->
+<!--                    <p class="card-text"></p>-->
+<!--                </div>-->
+<!--            </div>-->
+        </div>
+
+        <div class="row mt-3 justify-content-md-center">
+            <div class="col-md-8 col-12 text-center">
+                <p style="font-size: 12px; line-height: 1.5;">*Caso seja sua primeira vez no Club, você receberá 7 dias
+                    para testar, podendo cancelar a qualquer momento antes da primeira cobrança.</p>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <div class="button">
+                    <a class="btn btn-club" href="https://t.me/mundstockbot" target="_blank"><i class="fa fa-telegram"></i> Entrar para o Club</a>
+                    <!--                    <a class="btn btn-club" href="#" target="_blank">Novas Vagas em Breve!</a>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End About Club -->
+
+
+{% endblock %}

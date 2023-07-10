@@ -1,0 +1,309 @@
+{% extends 'base.html' %}
+{% block robots %}{% with noindex=True %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-consultoria overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Perfil do Investidor</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li><a href="#">Consultoria<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">Formulário de Perfil do Investidor</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+
+<section id="formulario" class="section contact">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 wow zoomIn">
+				<div class="section-title">
+					<h2>Perfil do <span>Investidor</span></h2>
+					<p>Para realizar a consultoria financeira é preciso analisarmos o seu perfil de investidor, para identificarmos o seu perfil de risco, objetivos e preferências.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				{% include 'utils/aviso-erro-formulario.html' %}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="form-head">
+					<!-- Form -->
+					<form id="form-perfil" method="post" action="">
+						{% csrf_token %}
+						<div class="row">
+							<div class="col-12 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" name="nome" placeholder="Nome completo"
+										   value="{{ formulario.cliente.pessoa.nome }}" maxlength="100" minlength="8">
+									<div class="invalido">
+										{{ form.nome.errors }}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" name="cpf" placeholder="CPF" value="{{ formulario.cliente.pessoa.cpf }}" data-mask="000.000.000-00">
+									<div class="invalido">
+										{{ form.cpf.errors }}
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" value="{{ formulario.cliente.pessoa.email }}" readonly>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control telefone" name="telefone" placeholder="Telefone" value="{{ formulario.cliente.pessoa.telefone|default_if_none:'' }}">
+									<div class="invalido">
+										{{ form.telefone.errors }}
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-sm-6 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control cep" name="cep" placeholder="CEP"
+										   value="{{ formulario.cliente.pessoa.cep }}"
+										   onblur="pesquisacep(this.value);" data-mask="00000-000">
+									<div class="invalido">
+										{{ form.cep.errors }}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-10 mb-3">
+								<div class="form-group">
+									<input id="id_logradouro" type="text" class="form-control" name="logradouro" placeholder="Logradouro" value="{{ formulario.cliente.pessoa.logradouro|default_if_none:'' }}">
+									<div class="invalido">
+										{{ form.logradouro.errors }}
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-2 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" name="numero" placeholder="Número" value="{{ formulario.cliente.pessoa.numero }}" data-mask="000000" maxlength="6">
+									<div class="invalido">
+										{{ form.numero.errors }}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 mb-3">
+								<div class="form-group">
+									<input type="text" class="form-control" name="complemento" placeholder="Complemento" value="{{ formulario.cliente.pessoa.complemento|default_if_none:'' }}">
+								</div>
+							</div>
+							<div class="col-sm-6 mb-3">
+								<div class="form-group">
+									<input id="id_bairro" type="text" class="form-control" name="bairro" placeholder="Bairro" value="{{ formulario.cliente.pessoa.bairro|default_if_none:'' }}">
+									<div class="invalido">
+										{{ form.bairro.errors }}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mb-5">
+							<div class="col-sm-6 mb-3">
+								<div class="form-group">
+									<input id="id_cidade" type="text" class="form-control" name="cidade" placeholder="Cidade" value="{{ formulario.cliente.pessoa.cidade|default_if_none:'' }}">
+									<div class="invalido">
+										{{ form.cidade.errors }}
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 mb-3">
+								<div class="form-group">
+									<select name="uf" class="form-control" required="" id="id_uf">
+										<option value="" selected="">Estado</option>
+										<option value="AC">Acre</option>
+										<option value="AL">Alagoas</option>
+										<option value="AP">Amapá</option>
+										<option value="AM">Amazonas</option>
+										<option value="BA">Bahia</option>
+										<option value="CE">Ceará</option>
+										<option value="DF">Distrito Federal</option>
+										<option value="ES">Espírito Santo</option>
+										<option value="GO">Goiás</option>
+										<option value="MA">Maranhão</option>
+										<option value="MT">Mato Grosso</option>
+										<option value="MS">Mato Grosso do Sul</option>
+										<option value="MG">Minas Gerais</option>
+										<option value="PA">Pará</option>
+										<option value="PB">Paraíba</option>
+										<option value="PR">Paraná</option>
+										<option value="PE">Pernambuco</option>
+										<option value="PI">Piauí</option>
+										<option value="RJ">Rio de Janeiro</option>
+										<option value="RN">Rio Grande do Norte</option>
+										<option value="RS">Rio Grande do Sul</option>
+										<option value="RO">Rondônia</option>
+										<option value="RR">Roraima</option>
+										<option value="SC">Santa Catarina</option>
+										<option value="SP">São Paulo</option>
+										<option value="SE">Sergipe</option>
+										<option value="TO">Tocantins</option>
+									</select>
+									<div class="invalido">
+										{{ form.uf.errors }}
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.idade.label_tag }}</div>
+							{{ form.idade }}
+							<div class="invalido">
+								{{ form.idade.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.formacao_academica.label_tag }}</div>
+							{{ form.formacao_academica }}
+							<div class="invalido">
+								{{ form.formacao_academica.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.conhecimento_investimento.label_tag }}</div>
+							{{ form.conhecimento_investimento }}
+							<div class="invalido">
+								{{ form.conhecimento_investimento.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.conhecimento_economia.label_tag }}</div>
+							{{ form.conhecimento_economia }}
+							<div class="invalido">
+								{{ form.conhecimento_economia.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.investimentos.label_tag }}</div>
+							{{ form.investimentos }}
+							<div class="invalido">
+								{{ form.investimentos.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.expectativa.label_tag }}</div>
+							{{ form.expectativa }}
+							<div class="invalido">
+								{{ form.expectativa.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.benchmark.label_tag }}</div>
+							{{ form.benchmark }}
+							<div class="invalido">
+								{{ form.benchmark.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.objetivo.label_tag }}</div>
+							{{ form.objetivo }}
+							<div class="invalido">
+								{{ form.objetivo.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.tempo.label_tag }}</div>
+							{{ form.tempo }}
+							<div class="invalido">
+								{{ form.tempo.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.recursos.label_tag }}</div>
+							{{ form.recursos }}
+							<div class="invalido">
+								{{ form.recursos.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.tipo_gestao.label_tag }}</div>
+							{{ form.tipo_gestao }}
+							<div class="invalido">
+								{{ form.tipo_gestao.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.tolerancia.label_tag }}</div>
+							{{ form.tolerancia }}
+							<div class="invalido">
+								{{ form.tolerancia.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.acoes_caindo.label_tag }}</div>
+							{{ form.acoes_caindo }}
+							<div class="invalido">
+								{{ form.acoes_caindo.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.opiniao_diversificacao.label_tag }}</div>
+							{{ form.opiniao_diversificacao }}
+							<div class="invalido">
+								{{ form.opiniao_diversificacao.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.reserva_emergencia.label_tag }}</div>
+							{{ form.reserva_emergencia }}
+							<div class="invalido">
+								{{ form.reserva_emergencia.errors }}
+							</div>
+						</div>
+						<div class="form-check mb-5">
+							<div class="pergunta">{{ form.corretora.label_tag }}</div>
+							{{ form.corretora }}
+							<div class="invalido">
+								{{ form.corretora.errors }}
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col">
+								<div class="form-group">
+									<div class="button">
+										<button type="submit" class="btn primary">Enviar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<!--/ End Form -->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script src="{% static 'js/jquery.mask.js' %}"></script>
+<script src="{% static 'js/form-validity-custom.js' %}"></script>
+{% endblock %}
+

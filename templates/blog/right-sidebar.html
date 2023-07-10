@@ -1,0 +1,82 @@
+{% load static %}
+<div class="col-lg-4 col-12">
+    <div class="learnedu-sidebar">
+        <div class="search">
+            <form class="form" action="{% url 'blog:search' %}" method="get">
+                <input type="text" name="q" placeholder="Buscar post...">
+                <button class="button" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <!-- Categories -->
+        <div class="single-widget categories">
+            <h3 class="title">Categorias</h3>
+            <ul>
+                <li><a href="{% url 'blog:blog' %}"><i class="fa fa-angle-right"></i>Todas<span>{{ total }}</span></a></li>
+                {% for categoria in categorias %}
+                <li><a href="{% url 'blog:blog-categoria' categoria.slug %}"><i class="fa fa-angle-right"></i>{{ categoria.nome }}<span>{{ categoria|quantidade:categoria }}</span></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!--/ End Categories -->
+
+        <!-- Posts -->
+        <div class="single-widget posts">
+            <h3>Últimos <span>Posts</span></h3>
+            {% for artigo in ultimos %}
+            <div class="single-post">
+                <div class="post-img">
+                    <img src="{{ artigo.imagem.thumb.url }}" alt="#">
+                </div>
+                <div class="post-info">
+                    <h4><a href="{% url 'blog:artigo' artigo.slug %}">{{ artigo.titulo }}</a></h4>
+                    <span><i class="fa fa-calendar"></i>{{ artigo.criado }}</span>
+                </div>
+            </div>
+            {% empty %}
+            <div class="single-post">
+                <div class="post-img">
+                    <img src="http://via.placeholder.com/150x150" alt="#">
+                </div>
+                <div class="post-info">
+                    <h4><a href="#">Ainda não há conteúdo aqui.</a></h4>
+                    <span><i class="fa fa-calendar"></i>{% now "SHORT_DATE_FORMAT" %}</span>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!--/ End Posts -->
+
+        <!-- Cursos -->
+<!--        <div class="single-widget course">-->
+<!--            <h3>Nossos <span>Cursos</span></h3>-->
+<!--            <div class="single-course">-->
+<!--                <img src="{% static 'images/mundstock_educacional.jpg' %}" alt="#">-->
+<!--                <div class="course-content">-->
+<!--                    <h4><a href="">Economia & Ciclos de Mercado para Investidores</a></h4>-->
+<!--                    <div class="meta">R$ 1499,90 <span><i class="fa fa-clock-o"></i>40 horas</span></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="single-widget course">-->
+<!--            <h3>Nossos <span>Cursos</span></h3>-->
+<!--            { for curso in cursos %}-->
+<!--            <div class="single-course">-->
+<!--                <img src="{{ curso.imagem.thumb.url }}" alt="#">-->
+<!--                <div class="course-content">-->
+<!--                    <h4><a href="">{{ curso.nome }}</a></h4>-->
+<!--                    <div class="meta">R$ {{ curso.valor }} <span><i class="fa fa-clock-o"></i>{{ curso.duracao }} meses</span></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            { empty %}-->
+<!--            <div class="single-course">-->
+<!--                <img src="http://via.placeholder.com/150x150" alt="#">-->
+<!--                <div class="course-content">-->
+<!--                    <h4><a href="#">Ainda não há conteúdo aqui.</a></h4>-->
+<!--                    <div class="meta"><span><i class="fa fa-clock-o"></i>Em breve...</span></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            { endfor %}-->
+<!--        </div>-->
+        <!-- End Cursos -->
+    </div>
+</div>

@@ -1,0 +1,95 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-cursos overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Nossos Cursos</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="{% url 'core:cursos' %}">Cursos</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!-- Courses -->
+<section id="cursos" class="courses archives section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="section-title">
+					<h2>Conheça os <span>Cursos</span> da Mundstock Educacional</h2>
+<!--					<p>Mauris at varius orci. Vestibulum interdum felis eu nisl pulvinar, quis ultricies nibh. Sed ultricies ante vitae laoreet sagittis. In pellentesque viverra purus. Sed risus est, molestie nec hendrerit hendreri </p>-->
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			{% for curso in page_obj %}
+			<!-- Single Course -->
+			<div class="col-lg-4 col-md-6 col-12">
+				<div class="single-course">
+					<div class="course-head overlay">
+						<img src="{{ curso.imagem.thumb.url }}" alt="{{ curso.nome }}">
+						<a href="{% url 'core:curso' curso.id %}" class="btn"><i class="fa fa-link"></i></a>
+					</div>
+					<div class="single-content">
+						<h4><a href="{% url 'core:curso' curso.id %}"><span>{{ curso.categoria }}</span>{{ curso.nome }}</a></h4>
+						<p>{{ curso.descricao_breve }}</p>
+					</div>
+					<div class="course-meta">
+						<div class="meta-left">
+							<span><i class="fa fa-calendar"></i>{{ curso.inicio|date:'d/m/y' }}</span>
+							<span><i class="fa fa-clock-o"></i>{{ curso.duracao }}
+							{% if curso.duracao > 1 %}meses{% else %}mês{% endif %}
+							</span>
+						</div>
+						<span class="price">{% if curso.ativo %}R$ {{ curso.valor }}{% else %}Encerrado{% endif %}</span>
+					</div>
+				</div>
+			</div>
+			<!--/ End Single Course -->
+			{% empty %}
+			<div class="col-12 mb-5">
+				<p class="h6">Em breve lançaremos nosso curso.</p>
+            </div>
+			{% endfor %}
+		</div>
+
+		{% if is_paginated %}
+		<div class="row">
+			<div class="col-12">
+				<!-- Start Pagination -->
+				<div class="pagination-main">
+					<ul class="pagination">
+						{% if page_obj.has_previous %}
+						<li class="prev"><a href="?page={{ page_obj.previous_page_number }}#cursos"><i class="fa fa-angle-double-left"></i></a></li>
+						{% endif %}
+
+						{% for num in paginator.page_range %}
+						{% if page_obj.number == num %}
+						<li class="active"><a href="#cursos">{{ num }}</a></li>
+						{% else %}
+						<li><a href="?page={{ num }}#cursos">{{ num }}</a></li>
+						{% endif %}
+						{% endfor %}
+
+						{% if page_obj.has_next %}
+						<li class="next"><a href="?page={{ page_obj.next_page_number }}#cursos"><i class="fa fa-angle-double-right"></i></a></li>
+						{% endif %}
+					</ul>
+				</div>
+				<!--/ End Pagination -->
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</section>
+<!--/ End Courses -->
+{% endblock %}
+		

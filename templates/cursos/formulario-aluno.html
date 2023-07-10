@@ -1,0 +1,153 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-cursos overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Matrícula</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li><a href="{% url 'core:cursos' %}">Cursos<i class="fa fa-angle-right"></i></a></li>
+					<li><a href="{% url 'core:cursos' %}">{{ curso.nome }}<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">Formulário</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<section id="formulario" class="about-us contact section">
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Formulário de <span>Matrícula</span></h2>
+                    <p><strong>{{ curso.nome }}:</strong> {{ curso.descricao_breve }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            {% if messages %}
+			    <script>location.href = "#formulario";</script>
+				{% for m in messages %}
+					<div class="col-12">
+						<div class="alert alert-{{ m.tags }} alert-dismissible fade show" role="alert">
+							{{ m }}
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+				{% endfor %}
+			{% endif %}
+            <div class="col-12">
+                <div class="form-head">
+                    <form action="{% url 'gestao:formulario' curso.id %}" class="" autocomplete="off" method="post">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <div class="form-group">
+                                    {{ form.nome }}
+                                    <div class="invalido">
+										{{ form.nome.errors }}
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <div class="form-group">
+                                    {{ form.email }}
+                                    <div class="invalido">
+										{{ form.email.errors }}
+									</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <div class="form-group">
+                                    {{ form.telefone }}
+                                    <div class="invalido">
+										{{ form.telefone.errors }}
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 mb-3">
+                                <div class="form-group">
+                                    {{ form.nacionalidade }}
+                                    <div class="invalido">
+										{{ form.nacionalidade.errors }}
+									</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 mb-3">
+                                <div class="form-group">
+                                    {{ form.estado_civil }}
+                                    <div class="invalido">
+										{{ form.estado_civil.errors }}
+									</div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12 mb-3">
+                                <div class="form-group">
+                                    {{ form.profissao }}
+                                    <div class="invalido">
+										{{ form.profissao.errors }}
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    {{ form.cpf }}
+                                    <div class="invalido">
+										{{ form.cpf.errors }}
+									</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <div class="form-group">
+                                    {{ form.rg }}
+                                    <div class="invalido">
+										{{ form.rg.errors }}
+									</div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        {% include 'formulario-endereco.html' %}
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input id="chk" class="form-check-input" type="checkbox" name="aceito" required>
+                                    <label class="form-check-label" for="chk">ACEITO O <a href="#">CONTRATO DE PRESTAÇÃO DE SERVIÇOS</a>.</label>
+                                    <div class="invalid-feedback">
+                                        Você precisa aceitar antes de continuar.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <div class="button">
+                                        <button type="submit" class="btn primary">Matricular</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="{% static 'js/jquery.mask.js' %}"></script>
+<script src="{% static 'js/form-validity-custom.js' %}"></script>
+{% endblock %}

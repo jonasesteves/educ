@@ -1,0 +1,403 @@
+{% extends 'base.html' %}
+{% block title %}{% with title='Curso' %}{{ block.super }}{% endwith %}{% endblock %}
+{% block description %}{% with description='O curso de Economia e Ciclos de Mercado proporciona aprendizado sobre a importância da economia e dos ciclos de mercado ao investir no mercado financeiro.' %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-curso-ecm overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Curso</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li><a href="#">Curso<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">{{ curso.nome }}</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!-- Courses -->
+<section class="courses single section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<div class="single-main">
+					<div class="row">
+						<div class="col-lg-8 col-12">
+							<!-- Single Course -->
+							<div class="single-course">
+								<div class="course-head video-apresentacao">
+									<iframe width="560" height="315" src="https://www.youtube.com/embed/oDEQnTSP4o0"
+											title="YouTube video player" frameborder="0"
+											allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+									</iframe>
+<!--									<img src="{% static 'images/mundstock_educacional.jpg' %}" alt="#">-->
+								</div>
+							</div>
+							<!--/ End Single Course -->
+						</div>
+						<div class="col-lg-4 col-12">
+							<!-- Course Features -->
+							<div class="course-feature">
+								<div class="feature-main">
+									<h4>Características</h4>
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-calendar"></i>
+										<span class="label">Matrículas</span>
+										<span class="value">{{ curso.inicio|default_if_none:'Em breve!' }}</span>
+									</div>
+									<!--/ End Single Feature -->
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-clock-o"></i>
+										<span class="label">Duração</span>
+										<span class="value">{{ curso.duracao }} {% if curso.duracao > 1 %}meses{% else %}mês{% endif %}</span>
+									</div>
+									<!--/ End Single Feature -->
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-magic"></i>
+										<span class="label">Nível</span>
+										<span class="value">{{ curso.nivel }}</span>
+									</div>
+									<!--/ End Single Feature -->
+									<!-- Single Feature -->
+									<div class="single-feature">
+										<i class="fa fa-check-square-o"></i>
+										<span class="label">Certificado</span>
+										<span class="value">{{ curso.certificado }}</span>
+									</div>
+									<!--/ End Single Feature -->
+
+								</div>
+							</div>
+							<!--/ End Course Features -->
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<!-- Course Meta -->
+							<div class="course-meta">
+								<!-- Course Info -->
+								<div class="course-info">
+									<div class="single-info author">
+										<img src="{% static 'images/thumb_igor.jpg' %}" alt="Igor Mundstock">
+										<h4>Professor:<a href="{% url 'core:quem-somos' %}"><span>Igor Mundstock</span></a></h4>
+									</div>
+									<div class="single-info category">
+										<i class="fa fa-money"></i>
+										<h4>Categoria<a href="#"><span>Economia</span></a></h4>
+									</div>
+									<div class="single-info rattings">
+										<i class="fa fa-clock-o"></i>
+										<h4>Duração:<span>{{ curso.duracao }} {% if curso.duracao > 1 %}meses{% else %}mês{% endif %}</span></h4>
+									</div>
+								</div>
+								<!--/ End Course Info -->
+								<!-- Course Price -->
+								<div class="course-price">
+									<p>R$ {{ valor_com_desconto }}</p>
+									<a href="{% if curso.inicio %}{% url 'gestao:matricula' curso.id %}{% else %}#{% endif %}" class="btn">
+										<i class="fa fa-users"></i>
+										{% if curso.inicio %}Fazer matrícula{% else %}Matrículas em breve{% endif %}
+									</a>
+								</div>
+								<!--/ End Course Price -->
+							</div>
+							<!--/ End Course Meta -->
+						</div>
+						<div class="col-12">
+							<div class="content">
+								<h2>{{ curso.nome }}</h2>
+								{{ curso.descricao_completa|safe }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% if curso.desconto > 0 %}
+<section class="section fun-facts overlay" data-stellar-background-ratio="0.5">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6 col-12 text-center wow zoomIn" data-wow-delay="0.6s">
+				<div class="single-fact">
+					<i class="fas fa-stopwatch" style="color: #000;"></i>
+					<p class="titulo" style="color: #000;">Desconto por tempo limitado</p>
+					<p class="descricao font-24" style="color: #000;">Inscreva-se até o dia {{ curso.prazo_desconto }} e garanta <strong>R${{ curso.desconto }}</strong> de desconto!</p>
+				</div>
+			</div>
+			<div class="col-md-6 col-12 text-center margem-sm wow zoomIn" data-wow-delay="0.8s">
+				<div class="single-fact">
+					<i class="fas fa-money-bill-wave" style="color: #000;"></i>
+					<div class="titulo font-36" style="color: #000;"><s>De R$ {{ curso.valor }}</s></div>
+					<div class="titulo font-36 mt-3" style="color: #000;">Por R$ {{ valor_com_desconto }}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endif %}
+
+<section class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 wow zoomIn">
+				<div class="section-title">
+					<h2>Conheça a grade do <span>Curso</span></h2>
+					<p class="">O curso foi dividido em <span class="font-24">04</span> módulos,
+						do mais básico até o mais avançado, estruturado para facilitar o aprendizado
+						do aluno. O curso progredirá do nível mais introdutório até os assuntos mais avançados
+						permitindo que todos consigam compreender como os ciclos econômicos funcionam e
+						como, a partir disso, podemos investir melhor.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="row mt-3 justify-content-around">
+			<div class="col-lg-5 col-md-6 col-sm-12 align-self-center wow fadeInLeft" data-wow-delay="0.5s">
+				<div class="row">
+					<div class="col-12">
+						<div class="titulo-modulo">Módulo 01</div>
+					</div>
+					<div class="col-12">
+						<div class="titulo-topico mt-2">Introdução à</div>
+						<div class="titulo-topico mt-1">Microeconomia</div>
+					</div>
+					<div class="col-12 mt-2">
+						<div class="titulo-modulo">Microeconomia</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5 col-md-6 col-sm-12 align-self-center esp wow fadeInRight" data-wow-delay="0.5s">
+				<div class="row align-items-center justify-content-around">
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 01</div>
+					</div>
+					<div class="col-8">
+						<div class="descricao-topico">Escolhas, Custos, Incentivos, <br>Modelos e Fatores de Produção</div>
+					</div>
+				</div>
+				<div class="row align-items-center justify-content-around mt-4">
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 02</div>
+					</div>
+					<div class="col-8">
+						<div class="descricao-topico">História, Teoria da Escolha do <br>Consumidor e Formação de Preços</div>
+					</div>
+				</div>
+				<div class="row align-items-center justify-content-around mt-4">
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 03</div>
+					</div>
+					<div class="col-8">
+						<div class="descricao-topico">Elasticidade, Imposto e <br>Comércio Internacional</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-around margem">
+			<div class="col-lg-5 col-md-6 col-sm-12 order-md-1 order-12 align-self-center esp wow fadeInLeft" data-wow-delay="0.5s">
+				<div class="row align-items-center justify-content-around">
+					<div class="col-8">
+						<div class="descricao-topico text-right">Crescimento Econômico e Produtividade</div>
+					</div>
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 04</div>
+					</div>
+				</div>
+				<div class="row align-items-center justify-content-around mt-3">
+					<div class="col-8">
+						<div class="descricao-topico text-right">Inflação e Taxa de <br>Desemprego</div>
+					</div>
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 05</div>
+					</div>
+				</div>
+				<div class="row align-items-center justify-content-around mt-3">
+					<div class="col-8">
+						<div class="descricao-topico text-right">Taxa de Juros, <br>Curva de Juros e DIs</div>
+					</div>
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 06</div>
+					</div>
+				</div>
+				<div class="row align-items-center justify-content-around mt-3">
+					<div class="col-8">
+						<div class="descricao-topico text-right">Balança de <br>Pagamentos</div>
+					</div>
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 07</div>
+					</div>
+				</div>
+				<div class="row align-items-center justify-content-around mt-3">
+					<div class="col-8">
+						<div class="descricao-topico text-right">Moeda e Taxa <br>de Câmbio</div>
+					</div>
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 08</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5 col-md-6 col-sm-12 right order-md-12 order-1 align-self-center wow fadeInRight" data-wow-delay="0.5s">
+				<div class="row">
+					<div class="col-12">
+						<div class="titulo-modulo">Módulo 02</div>
+					</div>
+					<div class="col-12">
+						<p class="titulo-topico mt-2">Dominando a</p>
+						<p class="titulo-topico mt-1">Macroeconomia</p>
+					</div>
+					<div class="col-12">
+						<div class="titulo-modulo mt-2">Macroeconomia</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-around margem">
+			<div class="col-lg-5 col-md-6 col-sm-12 align-self-center wow fadeInLeft" data-wow-delay="0.5s">
+				<div class="row">
+					<div class="col-12">
+						<div class="titulo-modulo">Módulo 03</div>
+					</div>
+					<div class="col-12">
+						<p class="titulo-topico mt-2">Macroeconomia II</p>
+						<p class="titulo-topico mt-1">Tópicos Avançados</p>
+					</div>
+					<div class="col-12 mt-2">
+						<div class="titulo-modulo">Macroeconomia II</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5 col-md-6 col-sm-12 align-self-center esp wow fadeInRight" data-wow-delay="0.5s">
+				<div class="row align-items-center justify-content-around">
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 09</div>
+					</div>
+					<div class="col-8">
+						<div class="descricao-topico">Modelo Agregado e Curva de Phillips</div>
+					</div>
+				</div>
+				<div class="row align-items-center justify-content-around mt-4">
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 10</div>
+					</div>
+					<div class="col-8">
+						<div class="descricao-topico">Bancos Centrais e Política Monetária</div>
+					</div>
+				</div>
+				<div class="row align-items-center justify-content-around mt-4">
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 11</div>
+					</div>
+					<div class="col-8">
+						<div class="descricao-topico">Governos e Política Fiscal</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row justify-content-around margem">
+			<div class="col-lg-5 col-md-6 col-sm-12 order-md-1 order-12 align-self-center esp wow fadeInLeft" data-wow-delay="0.5s">
+				<div class="row align-items-center justify-content-around">
+					<div class="col-8">
+						<div class="descricao-topico text-right">Ciclos Econômicos e <br>Indicadores</div>
+					</div>
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 12</div>
+					</div>
+				</div>
+				<div class="row align-items-center justify-content-around mt-4">
+					<div class="col-8">
+						<div class="descricao-topico text-right">As Maiores Crises <br>da História</div>
+					</div>
+					<div class="col-3 text-center align-self-center">
+						<div class="topico">Aula 13</div>
+					</div>
+				</div>
+				<div class="row align-items-center justify-content-around mt-4">
+					<div class="col-8">
+						<div class="descricao-topico text-right">Aula <br>Bônus</div>
+					</div>
+					<div class="col-3 text-center align-self-center">
+						<div class="topico" style="background: #f00; color: #fff; padding: 10px 3px;">Aula Bônus</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5 col-md-6 col-sm-12 right order-md-12 order-1 align-self-center wow fadeInRight" data-wow-delay="0.5s">
+				<div class="row">
+					<div class="col-12">
+						<div class="titulo-modulo">Módulo 04</div>
+					</div>
+					<div class="col-12">
+						<p class="titulo-topico mt-2">Ciclos, Crises e</p>
+						<p class="titulo-topico mt-1">Investimentos</p>
+					</div>
+					<div class="col-12">
+						<div class="titulo-modulo mt-2">Ciclos Econômicos</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+
+<section class="section fun-facts escuro overlay curso" data-stellar-background-ratio="0.5">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-4 col-sm-6 col-12 mt-5 text-center wow zoomIn" data-wow-delay="0.6s">
+				<div class="single-fact">
+					<i class="fas fa-certificate"></i>
+					<p class="titulo">Certificado</p>
+					<p class="descricao">Certificado de 40 horas após a conclusão do curso</p>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6 col-12 mt-5 text-center wow zoomIn" data-wow-delay="0.8s">
+				<div class="single-fact">
+					<i class="fab fa-youtube"></i>
+					<p class="titulo">Aulas Ao Vivo</p>
+					<p class="descricao">Aulas 100% ao vivo para acompanhar o progresso dos alunos</p>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-6 col-12 mt-5 text-center wow zoomIn" data-wow-delay="1s">
+				<div class="single-fact">
+					<i class="fas fa-unlock-alt"></i>
+					<p class="titulo">Acesso por 1 ano</p>
+					<p class="descricao">Acesso irrestrito por 1 ano, para você estudar quando quiser</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+		<div class="row mb-5 mt-2">
+			<div class="col-12 text-center">
+				<div class="">
+					<a class="btn bg-orange text-white btn-matricula" href="{% url 'gestao:matricula' curso.id %}"><div class="font-24">Matrículas Abertas<br>Em até 6x!</div></a>
+				</div>
+			</div>
+			<div class="col-12 mt-5 font-18">
+				<p>Inscrições com desconto de {{ curso.desconto }} abrirão no dia {{ curso.inicio }}. A partir de {{ curso.prazo_desconto }}
+					o valor do curso será de R$ {{ curso.valor }}. As inscrições encerrarão no dia 07 de Agosto de 2022 e as
+					aulas começarão no dia 09 de Agosto de 2022.</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+{% endblock %}

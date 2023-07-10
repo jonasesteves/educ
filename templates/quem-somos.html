@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}{% with title='Quem Somos' %}{{ block.super }}{% endwith %}{% endblock %}
+{% block description %}{% with description='Quem Somos: um pouco sobre Igor Mundstock' %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% load static %}
+{% load redes_sociais %}
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-professor overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Quem Somos</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">Quem Somos</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!-- Start Team Detail Area-->
+<section class="team-details section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-12">
+				<div class="member-detail">
+					<div class="image">
+						<img src="{% static 'images/professor.jpg' %}" alt="#">
+					</div>
+					<div class="contact">
+						<ul class="social">
+							<li><a href="{% instagram %}" target="_blank"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="{% twitter %}" class="active" target="_blank"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="{% telegram %}" target="_blank"><i class="fa fa-paper-plane"></i></a></li>
+							<li><a href="{% linkedin %}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="{% youtube %}" target="_blank"><i class="fa fa-youtube"></i></a></li>
+						</ul>
+						<ul class="address">
+							<li><a href="mailto:contato@mundstockeducacional.com.br"><i class="fa fa-envelope"></i>contato@mundstockeducacional.com.br</a></li>
+							<!--							<li><i class="fa fa-phone"></i>+44 1236 456 8888</li>-->
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-6 col-12">
+				<div class="detail-content">
+					<h2><strong>Igor Mundstock</strong></h2>
+					{% include 'utils/texto-team.html' %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Team Detail Area-->
+{% endblock %}

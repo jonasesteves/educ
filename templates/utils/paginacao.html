@@ -1,0 +1,27 @@
+{% if is_paginated %}
+<div class="row">
+    <div class="col-12">
+        <!-- Start Pagination -->
+        <div class="pagination-main">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="prev"><a href="?page={{ page_obj.previous_page_number }}"><i class="fa fa-angle-double-left"></i></a></li>
+                {% endif %}
+
+                {% for num in paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li class="active"><a href="#">{{ num }}</a></li>
+                {% else %}
+                <li><a href="?page={{ num }}#">{{ num }}</a></li>
+                {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li class="next"><a href="?page={{ page_obj.next_page_number }}"><i class="fa fa-angle-double-right"></i></a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <!--/ End Pagination -->
+    </div>
+</div>
+{% endif %}

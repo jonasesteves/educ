@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-blog overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Blog & Artigos</h2>
+                <ul class="bread-list">
+                    <li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+                    <li class=""><a href="{% url 'blog:blog' %}">Blog<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active"><a href="#">Buscar</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Breadcrumbs -->
+
+{% include 'blog/content.html' %}
+{% endblock %}

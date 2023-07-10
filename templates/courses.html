@@ -1,0 +1,57 @@
+{% load static %}
+<section class="courses section-bg section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 wow zoomIn">
+				<div class="section-title">
+					<h2>Conheça Nossos <span>Cursos</span></h2>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="course-slider">
+					{% for curso in cursos %}
+					<!-- Single Course -->
+					<div class="single-course">
+						<div class="course-head overlay">
+							<img src="{{ curso.imagem.thumb.url }}" alt="{{ curso.nome }}">
+							<a href="{% url 'core:curso' curso.id %}" class="btn"><i class="fa fa-link"></i></a>
+						</div>
+						<div class="single-content">
+							<h4><a href="{% url 'core:curso' curso.id %}"><span>{{ curso.categoria }}</span>{{ curso.nome }}</a></h4>
+							<p>{{ curso.descricao_breve }}</p>
+						</div>
+						<div class="course-meta">
+							<div class="meta-left">
+								<span><i class="fa fa-calendar"></i>{{ curso.inicio|date:'d/m/y' }}</span>
+								<span><i class="fa fa-clock-o"></i>{{ curso.duracao }}
+							{% if curso.duracao > 1 %}meses{% else %}mês{% endif %}</span>
+							</div>
+							<span class="price">R$ {{ curso.valor }}</span>
+						</div>
+					</div>
+					<!--/ End Single Course -->
+					{% empty %}
+					<div class="single-course">
+						<div class="course-head overlay">
+							<img src="{% static 'images/coming-soon.jpg' %}" alt="">
+							<a href="#" class="btn"><i class="fa fa-link"></i></a>
+						</div>
+						<div class="single-content">
+							<h4><a href="#"><span>Economia</span></a></h4>
+							<p>Estamos preparando novos conteúdos. As matrículas estarão disponíveis em breve.</p>
+						</div>
+						<div class="course-meta">
+							<div class="meta-left">
+								<span><i class="fa fa-calendar"></i>Em breve.</span>
+								<span><i class="fa fa-clock-o"></i>&nbsp</span>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

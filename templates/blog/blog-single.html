@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load redes_sociais %}
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-blog overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Blog & Artigos</h2>
+                <ul class="bread-list">
+                    <li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+                    <li class=""><a href="{% url 'blog:blog' %}">Blog<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active"><a href="#">Artigo</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!-- Blog Single -->
+<section class="blog b-archives single section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12 article">
+                <div class="blog-detail">
+                    <div class="detail-content">
+                        <div class="blog-info">
+                            <a href="#"><i class="fa fa-user"></i>By: {{ artigo.autor.get_full_name }}</a>
+                            <a href="#"><i class="fa fa-calendar"></i>{{ artigo.criado }}</a>
+                            <a href="#"><i class="fa fa-bolt"></i>{{ artigo.categoria }}</a>
+                        </div>
+                        <h2 class="blog-title"><a href="#">{{ artigo.titulo }}</a></h2>
+                        {{ artigo.texto|safe }}
+                    </div>
+                </div>
+            </div>
+            {% include 'blog/right-sidebar.html' %}
+        </div>
+    </div>
+</section>
+<!--/ End Blog Single -->
+{% endblock %}

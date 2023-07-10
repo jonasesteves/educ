@@ -1,0 +1,33 @@
+{% if messages %}
+	{% for m in messages %}
+		{% if m.level == 25 %}
+			<div class="modal fade mt-5" id="sucesso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header bg-orange">
+							<h5 class="modal-title text-white" id="exampleModalLabel">
+								{% if 'api' in m.tags %}
+									Análise do Perfil do Investidor
+								{% elif 'b' in m.tags %}
+									b
+								{% else %}
+									Done!
+								{% endif %}
+							</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<p class="font-18">{{ m }}</p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn bg-orange text-white" data-dismiss="modal">Ok</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script>$('#sucesso').modal({ show: true });</script>
+		{% endif %}
+	{% endfor %}
+{% endif %}

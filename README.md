@@ -1,0 +1,2 @@
+This project was developed to perform student enrollment in a course, manage enrollments and their financial status, automate billing tasks, and check for payment delays, as well as automatically send messages to Telegram. The project integrates with the Cielo payment API (Brazil).
+- For privacy reasons, some snippets of source code have been removed.

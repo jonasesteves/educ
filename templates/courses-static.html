@@ -1,0 +1,40 @@
+{% load static %}
+<section class="courses section-bg section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 wow zoomIn">
+				<div class="section-title">
+					<h2>Conheça Nossos <span>Cursos</span></h2>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="course-slider">
+					<!-- Single Course -->
+					<div class="single-course">
+						<div class="course-head overlay">
+							<img src="{% static 'images/mundstock_educacional.jpg' %}" alt="Economia e Ciclos de Mercado para Investidores">
+							<a href="#" class="btn"><i class="fa fa-link"></i></a>
+						</div>
+						<div class="single-content">
+							<h4><a href="#"><span>Economia</span>Economia & Ciclos de Mercado para Investidores</a></h4>
+							<p>O intuito do curso é ensinar os alunos sobre como funcionam as economias, quais dados usar para avaliar o desempenho das mesmas e como os diferentes ciclos econômicos afetam os ciclos de mercado e seus investimentos.</p>
+						</div>
+						<div class="course-meta">
+							<div class="meta-left">
+<!--								<span><i class="fa fa-calendar"></i>{{ curso.inicio|date:'d/m/y' }}</span>-->
+								<span><i class="fa fa-calendar"></i>Em breve</span>
+								<span><i class="fa fa-clock-o"></i>40 horas</span>
+<!--								<span><i class="fa fa-clock-o"></i>{{ curso.duracao }}-->
+<!--							{% if curso.duracao > 1 %}meses{% else %}mês{% endif %}</span>-->
+							</div>
+							<span class="price">R$ 1499,00</span>
+						</div>
+					</div>
+					<!--/ End Single Course -->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

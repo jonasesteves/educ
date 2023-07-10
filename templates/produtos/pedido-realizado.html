@@ -1,0 +1,58 @@
+{% extends '../base.html' %}
+{% block robots %}{% with noindex=True %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% load static %}
+{% block content %}
+
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-produtos overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Pagamento</h2>
+                <ul class="bread-list">
+                    <li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+                    <li><a href="{% url 'pedidos:produtos' %}">Produtos<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active"><a href="#">Pagamento</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Breadcrumbs -->
+
+
+<section class="about-us section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <div class="single-image">
+                    {% if pagamento.entrega.produto|inicia:'caneca' %}
+                        <img src="{% static 'images/caneca.jpg' %}" alt="#">
+                    {% elif pagamento.entrega.produto|inicia:'camiseta' %}
+                         <img src="{% static 'images/camiseta.jpg' %}" alt="#">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-lg-6 col-12">
+                <div class="about-text">
+                    <h2>{{ pagamento.entrega.produto|title }}</h2>
+                    <p>{{ pagamento.entrega.comprador }}</p>
+                    <p>{{ pagamento.entrega.logradouro }}, {{ pagamento.entrega.numero }}</p>
+                    <p>{{ pagamento.entrega.bairro }} - {{ pagamento.entrega.cidade }}, {{ pagamento.entrega.uf }}</p>
+                    <p>{{ pagamento.entrega.cep }}</p>
+                    <p><strong>Seu pedido foi realizado com sucesso.</strong> Obrigado por comprar na Mundstock Educacional!</p>
+                    <p>Realize o pagamento seguro utilizando o <strong>Mercado Pago</strong></p>
+                    <div class="button">
+                        <script
+                                src="https://www.mercadopago.com.br/integrations/v1/web-payment-checkout.js"
+                                data-preference-id="{{ pagamento.id_preferencia }}"
+                                data-button-label="Realizar Pagamento">
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}{% with title='Blog' %}{{ block.super }}{% endwith %}{% endblock %}
+{% block description %}{% with description='O Blog fornece pensamentos, análises de empresas, carta do economista e muito conteúdo informativo e de qualidade.' %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-blog overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Blog & Artigos</h2>
+                <ul class="bread-list">
+                    <li><a href="index.html">Home<i class="fa fa-angle-right"></i></a></li>
+                    <li class="active"><a href="#">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!-- Blogs -->
+{% include 'blog/content.html' %}
+<!--/ End Blogs -->
+{% endblock %}

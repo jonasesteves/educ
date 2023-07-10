@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block robots %}{% with noindex=True %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-consultoria overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Consultoria</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index'%}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li class=""><a href="#">Consultoria<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">Agendamento</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<!-- Agendamento -->
+<section class="about-us contact section">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 wow zoomIn">
+				<div class="section-title">
+					<h2>Agende sua <span>Consultoria</span></h2>
+					<p>Veja a seguir os dias e horários disponíveis</strong></p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<!-- Calendly inline widget begin -->
+				<div class="calendly-inline-widget" data-url="https://calendly.com/igormundstock/consultoria-investimentos" style="min-width:320px;height:680px;"></div>
+				<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+				<!-- Calendly inline widget end -->
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Agendamento -->
+
+{% include 'utils/modal-feedback.html' %}
+
+<script src="{% static 'js/jquery.mask.js' %}"></script>
+<script src="{% static 'js/form-validity-custom.js' %}"></script>
+
+
+{% endblock %}

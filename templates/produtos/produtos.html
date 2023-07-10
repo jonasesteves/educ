@@ -1,0 +1,94 @@
+{% extends '../base.html' %}
+{% block title %}{% with title='Produtos' %}{{ block.super }}{% endwith %}{% endblock %}
+{% block description %}{% with description='Os produtos da Mundstock Educacional' %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-produtos overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Produtos Mundstock Educacional</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">Produtos</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+
+<!-- Courses -->
+<section id="produtos" class="courses archives section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-12">
+				<!-- Single Course -->
+				<div class="single-course">
+					<div class="course-head overlay">
+						<img src="{% static 'images/caneca.jpg' %}" alt="#">
+						<a href="#" class="btn"><i class="fa fa-link"></i></a>
+					</div>
+					<div class="single-content">
+						<h4><a href="#"><span>Caneca</span>Mundstock Educacional</a></h4>
+						<p>Caneca em cerâmica personalizada frente e verso:</p>
+						<ul>
+							<li>Frente: Logo Mundstock Educacional</li>
+							<li>Verso: Frase Confúcio - "A essência do conhecimento consiste em aplica-lo, uma vez possuído."</li>
+							<li>Cor: Branca</li>
+						</ul>
+					</div>
+					<div class="course-meta">
+						<a class="price" href="#">Esgotado</a>
+					</div>
+				</div>
+				<!--/ End Single Course -->
+			</div>
+			<div class="col-lg-6 col-md-6 col-12">
+				<!-- Single Course -->
+				<div class="single-course">
+					<div class="course-head overlay">
+						<img src="{% static 'images/camiseta.jpg' %}" alt="#">
+<!--						<a href="#" class="btn"><i class="fa fa-link"></i></a>-->
+					</div>
+					<div class="single-content">
+						<h4><a href="#"><span>T-Shirt</span>Menos Preço, Mais Fundamento</a></h4>
+						<p>Camiseta Mundstock Educacional com estampa exclusiva da marca.</p>
+						<ul>
+							<li>Produzida eticamente no Brasil.</li>
+							<li>Tecido 100% algodão penteada 30.1</li>
+							<li>Estampa colorida em Silk Screen</li>
+							<li>Gola em U</li>
+						</ul>
+					</div>
+					<div class="course-meta">
+						<select id="camisa" class="meta-left tamanho-camiseta">
+							<option value="" selected>Escolha o tamanho</option>
+							<option value="camiseta_P">Tamanho P</option>
+							<option value="camiseta_M">Tamanho M</option>
+							<option value="camiseta_G">Tamanho G</option>
+						</select>
+						<a class="price" onclick="camisa()">R$ 50,00</a>
+					</div>
+					<script>
+                        function camisa() {
+                            var opc = document.getElementById("camisa").value;
+                            if (opc !== "") {
+                                window.location.href = opc;
+                            }
+                        }
+                    </script>
+				</div>
+				<!--/ End Single Course -->
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Courses -->
+
+{% endblock %}

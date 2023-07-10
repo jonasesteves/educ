@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block robots %}{% with noindex=True %}{{ block.super }}{% endwith %}{% endblock %}
+
+{% block content %}
+<!-- Start Breadcrumbs -->
+<section class="breadcrumbs breadcrumbs-sucesso overlay">
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				<h2>Pagamento</h2>
+				<ul class="bread-list">
+					<li><a href="{% url 'core:index' %}">Home<i class="fa fa-angle-right"></i></a></li>
+					<li class="active"><a href="#">Pagamento</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!--/ End Breadcrumbs -->
+
+<section class="about-us contact section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="section-title">
+					{% if mensagem %}
+						{{ cabecalho|safe }}
+					    {{ mensagem|safe }}
+					{% else %}
+					<h2>Seu pagamento foi <span>Autorizado</span></h2>
+                    <p><strong>Obrigado pela preferência. </strong>Continue explorando nosso conteúdo.</p>
+					{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

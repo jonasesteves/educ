@@ -1,0 +1,73 @@
+{% load static %}
+<section class="home-slider">
+    <div class="slider-active">
+        <!-- Single Slider -->
+        <div class="single-slider overlay" style="background-image:url('..{% static 'images/slider3.jpg' %}')" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-4 col-md-8 offset-md-4 col-12">
+                        <div class="slider-text text-right">
+                            <h1>Quer aprender sobre <span>Mercados & Economia?</span></h1>
+                            <p>Inscreva-se no Mundstock Club, o grupo de mentorados do economista Igor Mundstock e invista com mais segurança e assertividade</p>
+                            <div class="button">
+                                <a href="#" class="btn primary">Mais Informações</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Single Slider -->
+        <!-- Single Slider -->
+        <div class="single-slider overlay" style="background-image:url('..{% static 'images/livros-recomendados.jpg' %}')" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-4 col-md-8 offset-md-4 col-12">
+                        <div class="slider-text">
+                            <h1>Lista de livros <span>Recomendados</span></h1>
+                            <p>Você gosta de ler sobre finanças, investimentos e economia? Conheça a lista de Livros Recomendados da Mundstock Educacional, com uma seleção impecável de mais de 70 livros</p>
+                            <div class="button">
+                                <a href="{% url 'core:livros-recomendados' %}" class="btn primary">Mais Informações</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Single Slider -->
+        <!-- Single Slider -->
+        <div class="single-slider overlay" style="background-image:url('..{% static 'images/slider4.jpg' %}')" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-12">
+                        <div class="slider-text text-left">
+                            <h1>Grupo gratuito no <span>Telegram</span></h1>
+                            <p>Receba notificações em tempo real do que está acontecendo na economia global e nos mercados. Informação de qualidade nunca é o suficiente</p>
+                            <div class="button">
+                                <a href="https://t.me/mundstockinsights" target="_blank" class="btn primary">Acessar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Single Slider -->
+        <!-- Single Slider -->
+        <div class="single-slider overlay" style="background-image:url('..{% static 'images/slider-consultoria.webp' %}')" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-4 col-md-8 offset-md-4 col-12">
+                        <div class="slider-text text-right">
+                            <h1>Consultoria de Investimentos <span>Individual</span></h1>
+                            <p>O economista e consultor Igor Mundstock está pronto para ajudá-lo a criar uma carteira de investimentos condizente com suas necessidades e objetivos</p>
+                            <div class="button">
+                                <a href="{% url 'gestao:consultoria' %}" class="btn primary">Mais Informações</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Single Slider -->
+    </div>
+</section>
